@@ -2,7 +2,6 @@ String.prototype.capitalizeFirstLetter = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 };
 
-
 var titleCase = function(phrase) {
   var exceptions = ["and", "the", "of", "or", "a", "an", "but", "for", "nor"]
   var words = phrase.split(" ");
@@ -26,3 +25,17 @@ var titleCase = function(phrase) {
   };
   return titledWords.join(" ");
 };
+
+// --------------------------------------------------
+
+$(document).ready(function() {
+  $("form#title-case").submit(function(event) {
+    var phrase = $("input#phrase").val();
+    var result = titleCase(phrase);
+
+    $("#title").text(result);
+    $("#result").show();
+
+    event.preventDefault();
+  });
+});
